@@ -300,6 +300,11 @@ end
 % TODO: Allow configurability.
 global PTBScreenRes;
 PTBScreenRes=Screen('Resolution', PTBTheScreenNumber);
+% Keith edit to fix Screen Size bug
+ScreenSize = get(0,'MonitorPositions');
+ScreenSize = ScreenSize(PTBTheScreenNumber+1,:);
+PTBScreenRes.width = ScreenSize(3);
+PTBScreenRes.height = ScreenSize(4);
 
 % Clear the key queue
 global PTBKeyQueue;
