@@ -54,7 +54,18 @@ if PTBSoundNameFirst
 else
     file_name = [file_name '_' sound_file_name '.wav'];
 end
-wavwrite(transpose(PTBSoundKeyData), PTBRecordingFrequency, 16, file_name);
+
+try
+    % This won't work with earlier versions of matlab. If it doesn't go to
+    % audiowrite
+    wavwrite(transpose(PTBSoundKeyData), PTBRecordingFrequency, 16, file_name);
+catch err
+    try 
+        audiowrite(file_name,transpose(PTBSoundKeyData),PTBRecordingFrequency,'BitsPerSample',16)
+    catch
+        throw(err)
+    end
+end
 
 % Clear the buffer
 PTBSoundKeyData = [];
