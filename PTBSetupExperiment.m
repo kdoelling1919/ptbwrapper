@@ -436,18 +436,18 @@ end
 
 % Set the next to go as soon as possible
 global PTBNextPresentationTime;
-PTBNextPresentationTime = GetSecs;
+a = GetSecs; b = now(); c = GetSecs;
+PTBNextPresentationTime = (a + c)/2.;
 
 % Also, useful for timestamping
 global PTBStartTime;
 PTBStartTime = PTBNextPresentationTime;
 
-
 % And print out the start
 global PTBLogHeaders;
 global PTBLogFileID;
 global PTBDataFileID;
-PTBWriteLog(PTBLogFileID, 'START', num2str(PTBStartTime), '', PTBStartTime);
+PTBWriteLog(PTBLogFileID, 'START', num2str(PTBStartTime), datestr(b, 'HH:MM:SS.FFF'), PTBStartTime);
 fprintf(PTBLogFileID, 'Display\tStimulus\tTag\tTime');
 for h = 1:length(PTBLogHeaders)
     fprintf(PTBLogFileID,['\t' PTBLogHeaders{h}]); 
