@@ -56,8 +56,8 @@ if port_ind < 0
 		PsychPortAudio('GetAudioData', PTBSoundPorts(port_ind,1), 20);
 		PsychPortAudio('GetAudioData', PTBSoundPorts(port_ind,2), 20);
     else
-        PTBSoundPorts(port_ind,1) = PsychPortAudio('Open', [], [], 1, freq, channels);
-        PTBSoundPorts(port_ind,2) = PsychPortAudio('Open', [], [], 1, freq, channels);
+        PTBSoundPorts(port_ind,1:2) = PsychPortAudio('Open', [], [], 1, freq, channels);
+%         PTBSoundPorts(port_ind,2) = PsychPortAudio('Open', [], [], 1, freq, channels);
     end
 end
 
