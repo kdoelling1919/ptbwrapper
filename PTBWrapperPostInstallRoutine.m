@@ -260,7 +260,7 @@ if IsOctave
 end
 
 % Special case handling for different Matlab releases on MS-Windoze:
-if IsWin & ~IsOctave
+if IsWin && ~IsOctave
     rc = 0;
     try
         % Remove DLL folders from path:
@@ -268,7 +268,7 @@ if IsWin & ~IsOctave
         rmpath([PsychtoolboxRoot 'PsychBasic\MatlabWindowsFilesR2007a\']);
         
         % Is this a Release2007a or later Matlab?
-        if ~isempty(strfind(version, '2007')) | ~isempty(strfind(version, '2008')) | ~isempty(strfind(version, '2009')) | ~isempty(strfind(version, '2010'))
+        if ~verLessThan('matlab', '7.5')
             % This is a R2007a or post R2007a Matlab:
             % Add PsychBasic/MatlabWindowsFilesR2007a/ subfolder to Matlab
             % path:
