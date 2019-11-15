@@ -35,7 +35,13 @@ function PTBDisplayCircles(positions, size, colors, duration, varargin)
 % TODO: Handle positions more generally across different display functions.
 quality = 2;
 center = [0 0];
-Screen('DrawDots', wPtr, positions, size, colors, center, quality);
+if ~IsWin
+    Screen('DrawDots', wPtr, positions, size, colors, center, quality);
+else
+    baseCirc = [0 0 size size];
+    rect = CenterRectOnPointd(baseCirc, positions(:, 1), positions(:, 2));
+    Screen('FillOval', wPtr, colors, rect)
+end
 
 % Set the type...
 global PTBVisualStimulus;
