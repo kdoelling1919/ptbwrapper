@@ -28,8 +28,8 @@ global PTBOnScreenRect;
 % full screen for running.
 if is_onscreen
 	if (PTBIsDebugging)
-		PTBScreenRes.width = PTBScreenRes.width*.75;
-		PTBScreenRes.height = PTBScreenRes.height*.75;
+		PTBScreenRes.width = PTBScreenRes.width*.5;
+		PTBScreenRes.height = PTBScreenRes.height*.5;
 		[ptr PTBOnScreenRect] = Screen('OpenWindow', screen_number, PTBBackgroundColor, [0 0  PTBScreenRes.width PTBScreenRes.height]);
 	else
 		[ptr PTBOnScreenRect]  = Screen('OpenWindow', screen_number, PTBBackgroundColor);
